@@ -7,10 +7,8 @@ def read_ncbi_fasta(file_path):
                 sequence.append(line)
     return ''.join(sequence)
 
-        
 
 def brute_force_repeat_detector(sequence):
-   
     seq_len = len(sequence)
     found_repeats = []
 
@@ -22,7 +20,6 @@ def brute_force_repeat_detector(sequence):
             repeat_count = 1
             current_idx = i + motif_len
             
-           
             while current_idx <= seq_len - motif_len:
                 next_segment = sequence[current_idx : current_idx + motif_len]
                 if next_segment == motif:
@@ -33,15 +30,13 @@ def brute_force_repeat_detector(sequence):
             
             total_repetition_length = repeat_count * motif_len
             
-           
-            if repeat_count > 1 and 6 <= total_repetition_length <= 100:
+            if 6 <= repeat_count <= 10:
                 found_repeats.append({
                     'motif': motif,
                     'start_index': i,
                     'count': repeat_count,
                     'total_length': total_repetition_length
                 })
-                
                 i = current_idx
             else:
                 i += 1
@@ -54,18 +49,17 @@ if __name__ == "__main__":
     
     if dna_sequence:
         print(f"Loaded DNA sequence of length {len(dna_sequence)} from {file_name}.")
-        print("Running brute force engine to detect repetitions...\n")
+        print("Running brute force engine to detect motifs repeating 6 to 10 times...\n")
         
         results = brute_force_repeat_detector(dna_sequence)
         
         if not results:
-            print("No repetitions matching the criteria were found.")
+            print("No repetitions matching the criteria (6 to 10 repeats) were found.")
         else:
             print(f"Found {len(results)} valid repetition blocks:\n")
             print(f"{'Motif':<10} | {'Start Idx':<10} | {'Repeats':<8} | {'Total Length':<12}")
             print("-" * 50)
             
-
             results_sorted = sorted(results, key=lambda x: x['start_index'])
             
             for r in results_sorted:
