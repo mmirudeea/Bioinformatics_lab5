@@ -11,4 +11,4 @@ Note: Short DNA fragments meet small friction forces and travel faster through t
 
 ## Exercise 2
 
-Take an arbitrary DNA sequence from NCBI between 1000 and 3000 nucleotides (letters). Implement a software application that detects repetitions between 6 letters and 100 letters in the DNA sequence. These repetitions must be produced by a brute force engine and they must be combinations between 3 and 6 letters.
+Take an arbitrary DNA sequence from NCBI between 1000 and 3000 nucleotides (letters). Implement a software application that detects repetitions between 6 and 10 in the DNA sequence. These repetitions must be produced by a brute force engine and they must be combinations between 3 and 6 letters.
